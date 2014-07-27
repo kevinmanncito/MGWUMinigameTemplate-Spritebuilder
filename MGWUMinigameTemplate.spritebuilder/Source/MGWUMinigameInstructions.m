@@ -34,7 +34,7 @@
         
         _minigame = $minigame;
         
-        CCButton *$btnAdv = [CCButton buttonWithTitle:@"[BEGIN GAME]"];
+        CCButton *$btnAdv = [CCButton buttonWithTitle:@"[START GAME]"];
         [self addChild:$btnAdv];
         $btnAdv.positionType = CCPositionTypeNormalized;
         $btnAdv.position = ccp(0.5f,0.25f);
