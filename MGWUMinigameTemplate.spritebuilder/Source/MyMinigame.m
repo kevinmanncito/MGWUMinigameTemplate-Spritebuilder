@@ -35,6 +35,15 @@
     // delta will tell you how much time has passed since the last cycle (in seconds)
 }
 
+// Button controls
+-(void)jump {
+    [self.hero jump];
+}
+
+-(void)punch {
+    [self.hero punch];
+}
+
 -(void)endMinigame {
     // Be sure you call this method when you end your minigame!
     // Of course you won't have a random score, but your score *must* be between 1 and 100 inclusive

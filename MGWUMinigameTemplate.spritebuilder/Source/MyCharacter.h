@@ -11,4 +11,6 @@
 
 -(void)jump;
 
+-(void)punch;
+
 @end
