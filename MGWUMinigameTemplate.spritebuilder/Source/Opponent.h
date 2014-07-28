@@ -10,4 +10,6 @@
 
 @interface Opponent : CCNode
 
+-(void)block;
+
 @end

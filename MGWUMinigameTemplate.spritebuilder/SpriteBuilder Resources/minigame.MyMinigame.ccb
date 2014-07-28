@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>29</integer>
+	<integer>32</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -170,7 +170,7 @@
 								<key>value</key>
 								<array>
 									<real>0.40000000596046448</real>
-									<real>0.40000000596046448</real>
+									<real>0.44999998807907104</real>
 									<integer>0</integer>
 									<integer>2</integer>
 									<integer>2</integer>
@@ -201,7 +201,7 @@
 					</dict>
 					<dict>
 						<key>UUID</key>
-						<integer>28</integer>
+						<integer>31</integer>
 						<key>baseClass</key>
 						<string>CCBFile</string>
 						<key>children</key>
@@ -211,7 +211,7 @@
 						<key>displayName</key>
 						<string>Opponent</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>_enemy</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -231,11 +231,11 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>406.99993896484375</real>
-									<real>133.99996948242188</real>
+									<real>0.47218310832977295</real>
+									<real>0.30625000596046448</real>
 									<integer>0</integer>
-									<integer>0</integer>
-									<integer>0</integer>
+									<integer>2</integer>
+									<integer>2</integer>
 								</array>
 							</dict>
 							<dict>
@@ -257,161 +257,7 @@
 								<key>type</key>
 								<string>CCBFile</string>
 								<key>value</key>
-								<string>Opponent.ccb</string>
-							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>UUID</key>
-						<integer>22</integer>
-						<key>baseClass</key>
-						<string>CCSprite</string>
-						<key>children</key>
-						<array/>
-						<key>customClass</key>
-						<string></string>
-						<key>displayName</key>
-						<string>box_wood_2</string>
-						<key>memberVarAssignmentName</key>
-						<string></string>
-						<key>memberVarAssignmentType</key>
-						<integer>1</integer>
-						<key>physicsBody</key>
-						<dict>
-							<key>affectedByGravity</key>
-							<true/>
-							<key>allowsRotation</key>
-							<true/>
-							<key>bodyShape</key>
-							<integer>0</integer>
-							<key>collisionCategories</key>
-							<array/>
-							<key>collisionMask</key>
-							<array/>
-							<key>collisionType</key>
-							<string></string>
-							<key>cornerRadius</key>
-							<real>0.0</real>
-							<key>density</key>
-							<real>1</real>
-							<key>dynamic</key>
-							<false/>
-							<key>elasticity</key>
-							<real>0.30000001192092896</real>
-							<key>friction</key>
-							<real>0.30000001192092896</real>
-							<key>points</key>
-							<array>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-								</array>
-								<array>
-									<real>0.0</real>
-									<real>80</real>
-								</array>
-								<array>
-									<real>161</real>
-									<real>80</real>
-								</array>
-								<array>
-									<real>161</real>
-									<real>0.0</real>
-								</array>
-							</array>
-							<key>polygons</key>
-							<array>
-								<array>
-									<array>
-										<real>161</real>
-										<real>0.0</real>
-									</array>
-									<array>
-										<real>161</real>
-										<real>80</real>
-									</array>
-									<array>
-										<real>0.0</real>
-										<real>80</real>
-									</array>
-									<array>
-										<real>0.0</real>
-										<real>0.0</real>
-									</array>
-								</array>
-							</array>
-						</dict>
-						<key>properties</key>
-						<array>
-							<dict>
-								<key>name</key>
-								<string>name</string>
-								<key>type</key>
-								<string>StringSimple</string>
-								<key>value</key>
-								<string></string>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>69</real>
-									<real>35</real>
-									<integer>0</integer>
-									<integer>0</integer>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>anchorPoint</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.5</real>
-									<real>0.5</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>scale</string>
-								<key>type</key>
-								<string>ScaleLock</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>1</real>
-									<false/>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>spriteFrame</string>
-								<key>type</key>
-								<string>SpriteFrame</string>
-								<key>value</key>
-								<array>
-									<string></string>
-									<string>environment/box_wood_2.png</string>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>color</string>
-								<key>type</key>
-								<string>Color3</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>1</real>
-									<real>1</real>
-									<real>1</real>
-								</array>
+								<string>Opponent2.ccb</string>
 							</dict>
 						</array>
 					</dict>
@@ -512,10 +358,10 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>228</real>
+									<real>0.34999999403953552</real>
 									<real>35</real>
 									<integer>0</integer>
-									<integer>0</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -666,164 +512,10 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>385</real>
+									<real>0.34999999403953552</real>
 									<real>35</real>
-									<integer>0</integer>
-									<integer>0</integer>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>anchorPoint</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.5</real>
-									<real>0.5</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>scale</string>
-								<key>type</key>
-								<string>ScaleLock</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>1</real>
-									<false/>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>spriteFrame</string>
-								<key>type</key>
-								<string>SpriteFrame</string>
-								<key>value</key>
-								<array>
-									<string></string>
-									<string>environment/box_wood_2.png</string>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>color</string>
-								<key>type</key>
-								<string>Color3</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>1</real>
-									<real>1</real>
-									<real>1</real>
-								</array>
-							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>UUID</key>
-						<integer>25</integer>
-						<key>baseClass</key>
-						<string>CCSprite</string>
-						<key>children</key>
-						<array/>
-						<key>customClass</key>
-						<string></string>
-						<key>displayName</key>
-						<string>box_wood_2</string>
-						<key>memberVarAssignmentName</key>
-						<string></string>
-						<key>memberVarAssignmentType</key>
-						<integer>1</integer>
-						<key>physicsBody</key>
-						<dict>
-							<key>affectedByGravity</key>
-							<true/>
-							<key>allowsRotation</key>
-							<true/>
-							<key>bodyShape</key>
-							<integer>0</integer>
-							<key>collisionCategories</key>
-							<array/>
-							<key>collisionMask</key>
-							<array/>
-							<key>collisionType</key>
-							<string></string>
-							<key>cornerRadius</key>
-							<real>0.0</real>
-							<key>density</key>
-							<real>1</real>
-							<key>dynamic</key>
-							<false/>
-							<key>elasticity</key>
-							<real>0.30000001192092896</real>
-							<key>friction</key>
-							<real>0.30000001192092896</real>
-							<key>points</key>
-							<array>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-								</array>
-								<array>
-									<real>0.0</real>
-									<real>80</real>
-								</array>
-								<array>
-									<real>161</real>
-									<real>80</real>
-								</array>
-								<array>
-									<real>161</real>
-									<real>0.0</real>
-								</array>
-							</array>
-							<key>polygons</key>
-							<array>
-								<array>
-									<array>
-										<real>161</real>
-										<real>0.0</real>
-									</array>
-									<array>
-										<real>161</real>
-										<real>80</real>
-									</array>
-									<array>
-										<real>0.0</real>
-										<real>80</real>
-									</array>
-									<array>
-										<real>0.0</real>
-										<real>0.0</real>
-									</array>
-								</array>
-							</array>
-						</dict>
-						<key>properties</key>
-						<array>
-							<dict>
-								<key>name</key>
-								<string>name</string>
-								<key>type</key>
-								<string>StringSimple</string>
-								<key>value</key>
-								<string></string>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>543</real>
-									<real>35</real>
-									<integer>0</integer>
-									<integer>0</integer>
+									<integer>3</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -978,7 +670,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Block</string>
+				<string>block_button</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1000,7 +692,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
+							<real>41</real>
 							<real>30</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1038,7 +730,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>block</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -1304,7 +996,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Jump</string>
+				<string>jump_button</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1619,8 +1311,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1632,7 +1322,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Punch</string>
+				<string>punch_button</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1958,7 +1648,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Kick</string>
+				<string>kick_button</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -2018,7 +1708,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>kick</string>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -2284,7 +1974,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Time</string>
+				<string>time</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -2491,7 +2181,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>ScoreLabel</string>
+				<string>score_label</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -2698,7 +2388,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>time_label</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -2905,7 +2595,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLabelTTF</string>
+				<string>score</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>

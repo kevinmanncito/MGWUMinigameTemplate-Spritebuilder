@@ -13,4 +13,6 @@
 
 -(void)punch;
 
+-(void)kick;
+
 @end

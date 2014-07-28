@@ -10,17 +10,19 @@
 @implementation MyCharacter {
     float _velYPrev; // this tracks the previous velocity, it's used for animation
     float _punchTime; // this tracks how long a punch has been punching
+    float _kickTime; // how long a kick has been kicking
     BOOL _isIdling; // these BOOLs track what animations have been triggered.  By default, they're set to NO
     BOOL _isJumping;
     BOOL _isFalling;
     BOOL _isLanding;
     BOOL _isPunching;
+    BOOL _isKicking;
 }
 
 -(id)init {
     if ((self = [super init])) {
         // Initialize any arrays, dictionaries, etc in here
-        
+        CCLOG(@"MyCharacter created");
         // We initialize _isIdling to be YES, because we want the character to start idling
         // (Our animation code relies on this)
         _isIdling = YES;
@@ -56,11 +58,19 @@
             [self resetBools];
         }
     }
+    // KICK
+    if (_isKicking) {
+        _kickTime += delta;
+        if (_kickTime > 0.5) {
+            _kickTime = 0;
+            [self resetBools];
+        }
+    }
     
     // IDLE
     // The animation should be idle if the character was and is stationary
     // The character may only start idling if he or she was not already idling or falling
-    if (_velYPrev == 0 && self.physicsBody.velocity.y == 0 && !_isIdling && !_isFalling && !_isPunching) {
+    if (_velYPrev == 0 && self.physicsBody.velocity.y == 0 && !_isIdling && !_isFalling && !_isPunching && !_isKicking) {
         [self resetBools];
         _isIdling = YES;
         [self.animationManager runAnimationsForSequenceNamed:@"AnimSideIdling"];
@@ -68,7 +78,7 @@
     // JUMP
     // The animation should be jumping if the character wasn't moving up, but now is
     // The character may only start jumping if he or she was idling and isn't jumping
-    else if (_velYPrev == 0 && self.physicsBody.velocity.y > 0 && _isIdling && !_isJumping && !_isPunching) {
+    else if (_velYPrev == 0 && self.physicsBody.velocity.y > 0 && _isIdling && !_isJumping && !_isPunching && !_isKicking) {
         [self resetBools];
         _isJumping = YES;
         [self.animationManager runAnimationsForSequenceNamed:@"AnimSideJump"];
@@ -76,7 +86,7 @@
     // FALLING
     // The animation should be falling if the character's moving down, but was moving up or stalled
     // The character may only start falling if he or she was jumping and isn't falling
-    else if (_velYPrev >= 0 && self.physicsBody.velocity.y < 0 && _isJumping && !_isFalling && !_isPunching) {
+    else if (_velYPrev >= 0 && self.physicsBody.velocity.y < 0 && _isJumping && !_isFalling && !_isPunching && !_isKicking) {
         [self resetBools];
         _isFalling = YES;
         [self.animationManager runAnimationsForSequenceNamed:@"AnimSideFalling" tweenDuration:0.5f];
@@ -84,7 +94,7 @@
     // LANDING
     // The animation sholud be landing if the character's stopped moving down (hit something)
     // The character may only start landing if he or she was falling and isn't landing
-    else if (_velYPrev < 0 && self.physicsBody.velocity.y >= 0 && _isFalling && !_isLanding && !_isPunching) {
+    else if (_velYPrev < 0 && self.physicsBody.velocity.y >= 0 && _isFalling && !_isLanding && !_isPunching && !_isKicking) {
         [self resetBools];
         _isLanding = YES;
         [self.animationManager runAnimationsForSequenceNamed:@"AnimSideLand"];
@@ -102,6 +112,7 @@
     _isFalling = NO;
     _isLanding = NO;
     _isPunching = NO;
+    _isKicking = NO;
 }
 
 // This method tells the character to jump by giving it an upward velocity.
@@ -111,10 +122,19 @@
 }
 
 -(void)punch {
-    if (_isIdling) {
+    CCLOG(@"Punch method");
+    if (_isIdling && self.physicsBody.velocity.y >= 0) {
         [self resetBools];
         _isPunching = YES;
         [self.animationManager runAnimationsForSequenceNamed:@"AnimSidePunch"];
+    }
+}
+
+-(void)kick {
+    if (_isIdling && self.physicsBody.velocity.y >= 0) {
+        [self resetBools];
+        _isKicking = YES;
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideKick"];
     }
 }
 

@@ -13,6 +13,7 @@
     if ((self = [super init])) {
         // Initialize any arrays, dictionaries, etc in here
         self.instructions = @"These are the game instructions :D";
+        self.enemy = [[Opponent alloc] init];
     }
     return self;
 }
@@ -20,8 +21,6 @@
 -(void)didLoadFromCCB {
     // Set up anything connected to Sprite Builder here
     
-    // We're calling a public method of the character that tells it to jump!
-    [self.hero jump];
 }
 
 -(void)onEnter {
@@ -42,6 +41,16 @@
 
 -(void)punch {
     [self.hero punch];
+}
+
+-(void)kick {
+    [self.hero kick];
+}
+
+-(void)block {
+    CCLOG(@"Block button pushed");
+    [self.enemy block];
+    CCLOG(@"Should have entered enemy block method");
 }
 
 -(void)endMinigame {

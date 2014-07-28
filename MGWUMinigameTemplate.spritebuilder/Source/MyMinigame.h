@@ -9,11 +9,13 @@
 #import "cocos2d.h"
 #import "MGWUMinigame.h"
 #import "MyCharacter.h"
+#import "Opponent.h"
 
 @interface MyMinigame : MGWUMinigame
 
 // DO NOT DELETE!
 @property (nonatomic,retain) MyCharacter *hero;
 // DO NOT DELETE!
+@property (nonatomic,strong) Opponent *enemy;
 
 @end
