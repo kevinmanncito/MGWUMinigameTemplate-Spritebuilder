@@ -9,10 +9,16 @@
 
 @implementation MyCharacter {
     float _velYPrev; // this tracks the previous velocity, it's used for animation
+    float _duckTime;
+    float _punchTime;
+    float _kickTime;
     BOOL _isIdling; // these BOOLs track what animations have been triggered.  By default, they're set to NO
     BOOL _isJumping;
     BOOL _isFalling;
     BOOL _isLanding;
+    BOOL _isDucking;
+    BOOL _isPunching;
+    BOOL _isKicking;
 }
 
 -(id)init {
@@ -46,13 +52,35 @@
 }
 
 -(void)updateAnimations:(CCTime)delta {
+    
+    if (_isDucking) {
+        _duckTime += delta;
+        if (_duckTime > 0.90) {
+            [self resetBools];
+        }
+    }
+    
+    if (_isPunching) {
+        _punchTime += delta;
+        if (_punchTime > 0.90) {
+            [self resetBools];
+        }
+    }
+    
+    if (_isKicking) {
+        _kickTime += delta;
+        if (_kickTime > 0.90) {
+            [self resetBools];
+        }
+    }
+    
     // IDLE
     // The animation should be idle if the character was and is stationary
-    // The character may only start idling if he or she was not already idling or falling
-    if (_velYPrev == 0 && self.physicsBody.velocity.y == 0 && !_isIdling && !_isFalling) {
+    // The character may only start idling if he or she was not already idling or falling or ducking
+    if (_velYPrev == 0 && self.physicsBody.velocity.y == 0 && !_isIdling && !_isFalling && !_isDucking && !_isPunching && !_isKicking) {
         [self resetBools];
         _isIdling = YES;
-        [self.animationManager runAnimationsForSequenceNamed:@"AnimIsoIdling"];
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideIdling"];
     }
     // JUMP
     // The animation should be jumping if the character wasn't moving up, but now is
@@ -60,7 +88,7 @@
     else if (_velYPrev == 0 && self.physicsBody.velocity.y > 0 && _isIdling && !_isJumping) {
         [self resetBools];
         _isJumping = YES;
-        [self.animationManager runAnimationsForSequenceNamed:@"AnimIsoJump"];
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideJump"];
     }
     // FALLING
     // The animation should be falling if the character's moving down, but was moving up or stalled
@@ -68,7 +96,7 @@
     else if (_velYPrev >= 0 && self.physicsBody.velocity.y < 0 && _isJumping && !_isFalling) {
         [self resetBools];
         _isFalling = YES;
-        [self.animationManager runAnimationsForSequenceNamed:@"AnimIsoFalling" tweenDuration:0.5f];
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideFalling" tweenDuration:0.5f];
     }
     // LANDING
     // The animation sholud be landing if the character's stopped moving down (hit something)
@@ -76,7 +104,7 @@
     else if (_velYPrev < 0 && self.physicsBody.velocity.y >= 0 && _isFalling && !_isLanding) {
         [self resetBools];
         _isLanding = YES;
-        [self.animationManager runAnimationsForSequenceNamed:@"AnimIsoLand"];
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideLand"];
     }
     
     // We track the previous velocity, since it's important to determining how the character is and was moving for animations
@@ -90,6 +118,9 @@
     _isJumping = NO;
     _isFalling = NO;
     _isLanding = NO;
+    _isDucking = NO;
+    _isPunching = NO;
+    _isKicking = NO;
 }
 
 // This method tells the character to jump by giving it an upward velocity.
@@ -97,5 +128,68 @@
 -(void)jump {
     self.physicsBody.velocity = ccp(0,122);
 }
+
+-(void)duck {
+    if (_isIdling) {
+        [self resetBools];
+        _isDucking = YES;
+        _duckTime = 0;
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideDuck"];
+    }
+}
+
+-(void)punch {
+    if (_isIdling) {
+        [self resetBools];
+        _isPunching = YES;
+        _punchTime = 0;
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSidePunch"];
+    }
+}
+
+-(void)kick {
+    if (_isIdling) {
+        [self resetBools];
+        _isKicking = YES;
+        _kickTime = 0;
+        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideKick"];
+    }
+}
+
+-(NSDictionary *)getStatus {
+    
+    if (_isKicking) {
+        NSDictionary *status = @{
+            @"status": @"kicking",
+            @"time": [NSNumber numberWithFloat:_kickTime]
+        };
+        return status;
+    } else if (_isPunching) {
+        NSDictionary *status = @{
+            @"status": @"punching",
+            @"time": [NSNumber numberWithFloat:_punchTime]
+        };
+        return status;
+    } else if (_isDucking) {
+        NSDictionary *status = @{
+            @"status": @"ducking",
+            @"time": [NSNumber numberWithFloat:_duckTime]
+        };
+        return status;
+    } else if (_isIdling || _isLanding) {
+        NSDictionary *status = @{
+            @"status": @"idling",
+            @"time": @0
+        };
+        return status;
+    } else {
+        NSDictionary *status = @{
+            @"status": @"jumping",
+            @"time": @0
+        };
+        return status;
+    }
+}
+
 
 @end

@@ -11,4 +11,12 @@
 
 -(void)jump;
 
+-(void)duck;
+
+-(void)punch;
+
+-(void)kick;
+
+-(NSDictionary *)getStatus;
+
 @end

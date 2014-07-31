@@ -20,8 +20,6 @@
 -(void)didLoadFromCCB {
     // Set up anything connected to Sprite Builder here
     
-    // We're calling a public method of the character that tells it to jump!
-    [self.hero jump];
 }
 
 -(void)onEnter {
@@ -39,6 +37,22 @@
     // Be sure you call this method when you end your minigame!
     // Of course you won't have a random score, but your score *must* be between 1 and 100 inclusive
     [self endMinigameWithScore:arc4random()%100 + 1];
+}
+
+-(void)heroJump {
+    [self.hero jump];
+}
+
+-(void)heroDuck {
+    [self.hero duck];
+}
+
+-(void)heroPunch {
+    [self.hero punch];
+}
+
+-(void)heroKick {
+    [self.hero kick];
 }
 
 // DO NOT DELETE!
