@@ -14,6 +14,8 @@
 
 -(void)duck;
 
+-(void)print_duck_status;
+
 -(void)punch;
 
 -(void)kick;

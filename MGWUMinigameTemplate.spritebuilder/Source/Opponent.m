@@ -56,6 +56,7 @@
     
     if (_isDucking) {
         _duckTime += delta;
+        CCLOG(@"duck time: %f", _duckTime);
         if (_duckTime > 0.90) {
             [self resetBools];
         }
@@ -78,38 +79,39 @@
     // IDLE
     // The animation should be idle if the character was and is stationary
     // The character may only start idling if he or she was not already idling or falling or ducking
-    if (_velYPrev == 0 && self.physicsBody.velocity.y == 0 && !_isIdling && !_isFalling && !_isDucking && !_isPunching && !_isKicking) {
+    if (!_isIdling && !_isFalling && !_isDucking && !_isPunching && !_isKicking && !_isJumping && !_isLanding) {
+        CCLOG(@"Back to idling");
         [self resetBools];
         _isIdling = YES;
         [self.animationManager runAnimationsForSequenceNamed:@"AnimSideIdling"];
     }
-    // JUMP
-    // The animation should be jumping if the character wasn't moving up, but now is
-    // The character may only start jumping if he or she was idling and isn't jumping
-    else if (_velYPrev == 0 && self.physicsBody.velocity.y > 0 && _isIdling && !_isJumping) {
-        [self resetBools];
-        _isJumping = YES;
-        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideJump"];
-    }
-    // FALLING
-    // The animation should be falling if the character's moving down, but was moving up or stalled
-    // The character may only start falling if he or she was jumping and isn't falling
-    else if (_velYPrev >= 0 && self.physicsBody.velocity.y < 0 && _isJumping && !_isFalling) {
-        [self resetBools];
-        _isFalling = YES;
-        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideFalling" tweenDuration:0.5f];
-    }
-    // LANDING
-    // The animation sholud be landing if the character's stopped moving down (hit something)
-    // The character may only start landing if he or she was falling and isn't landing
-    else if (_velYPrev < 0 && self.physicsBody.velocity.y >= 0 && _isFalling && !_isLanding) {
-        [self resetBools];
-        _isLanding = YES;
-        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideLand"];
-    }
-    
-    // We track the previous velocity, since it's important to determining how the character is and was moving for animations
-    _velYPrev = self.physicsBody.velocity.y;
+//    // JUMP
+//    // The animation should be jumping if the character wasn't moving up, but now is
+//    // The character may only start jumping if he or she was idling and isn't jumping
+//    else if (_velYPrev == 0 && self.physicsBody.velocity.y > 0 && _isIdling && !_isJumping) {
+//        [self resetBools];
+//        _isJumping = YES;
+//        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideJump"];
+//    }
+//    // FALLING
+//    // The animation should be falling if the character's moving down, but was moving up or stalled
+//    // The character may only start falling if he or she was jumping and isn't falling
+//    else if (_velYPrev >= 0 && self.physicsBody.velocity.y < 0 && _isJumping && !_isFalling) {
+//        [self resetBools];
+//        _isFalling = YES;
+//        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideFalling" tweenDuration:0.5f];
+//    }
+//    // LANDING
+//    // The animation sholud be landing if the character's stopped moving down (hit something)
+//    // The character may only start landing if he or she was falling and isn't landing
+//    else if (_velYPrev < 0 && self.physicsBody.velocity.y >= 0 && _isFalling && !_isLanding) {
+//        [self resetBools];
+//        _isLanding = YES;
+//        [self.animationManager runAnimationsForSequenceNamed:@"AnimSideLand"];
+//    }
+//    
+//    // We track the previous velocity, since it's important to determining how the character is and was moving for animations
+//    _velYPrev = self.physicsBody.velocity.y;
     
 }
 
@@ -131,12 +133,18 @@
 }
 
 -(void)duck {
+    CCLOG(@"ducking");
     if (_isIdling) {
+        CCLOG(@"actually ducking");
         [self resetBools];
         _isDucking = YES;
         _duckTime = 0;
         [self.animationManager runAnimationsForSequenceNamed:@"AnimSideDuck"];
     }
+}
+
+-(void)print_duck_status {
+    CCLOG(@"_isDucking: %d", _isDucking);
 }
 
 -(void)punch {
