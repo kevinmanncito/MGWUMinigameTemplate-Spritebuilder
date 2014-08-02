@@ -10,16 +10,6 @@
 
 @interface Opponent : CCNode
 
--(void)jump;
-
 -(void)duck;
-
--(void)print_bool_status;
-
--(void)punch;
-
--(void)kick;
-
--(NSDictionary *)getStatus;
 
 @end
