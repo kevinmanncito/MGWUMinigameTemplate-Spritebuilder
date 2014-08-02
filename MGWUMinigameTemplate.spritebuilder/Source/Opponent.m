@@ -23,13 +23,11 @@
 }
 
 -(id)init {
-    if ((self = [super init])) {
-        // Initialize any arrays, dictionaries, etc in here
-        
-        // We initialize _isIdling to be YES, because we want the character to start idling
-        // (Our animation code relies on this)
+    self = [super init];
+    if (self) {
+        CCLOG(@"Opponent created");
+        [self resetBools];
         _isIdling = YES;
-        // by default, a BOOL's value is NO, so the other BOOLs are NO right now
     }
     return self;
 }
