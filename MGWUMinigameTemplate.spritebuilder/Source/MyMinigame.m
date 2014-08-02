@@ -51,7 +51,7 @@
 
 -(void)heroPunch {
     [self.hero punch];
-    [self.opponent print_duck_status];
+    [self.opponent print_bool_status];
 }
 
 -(void)heroKick {

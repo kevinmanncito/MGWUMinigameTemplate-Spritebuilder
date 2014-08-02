@@ -16,6 +16,6 @@
 // DO NOT DELETE!
 @property (nonatomic,retain) MyCharacter *hero;
 // DO NOT DELETE!
-@property (nonatomic,strong) Opponent *opponent;
+@property (nonatomic,retain) Opponent *opponent;
 
 @end

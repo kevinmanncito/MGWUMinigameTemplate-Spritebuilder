@@ -14,7 +14,7 @@
 
 -(void)duck;
 
--(void)print_duck_status;
+-(void)print_bool_status;
 
 -(void)punch;
 

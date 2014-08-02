@@ -77,7 +77,7 @@
     // IDLE
     // The animation should be idle if the character was and is stationary
     // The character may only start idling if he or she was not already idling or falling or ducking
-    if (!_isIdling && !_isFalling && !_isDucking && !_isPunching && !_isKicking && !_isJumping && !_isLanding) {
+    if (!_isIdling) {
         CCLOG(@"Back to idling");
         [self resetBools];
         _isIdling = YES;
@@ -141,8 +141,9 @@
     }
 }
 
--(void)print_duck_status {
+-(void)print_bool_status {
     CCLOG(@"_isDucking: %d", _isDucking);
+    CCLOG(@"_isIdling: %d", _isIdling);
 }
 
 -(void)punch {
