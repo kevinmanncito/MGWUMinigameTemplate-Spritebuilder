@@ -13,7 +13,6 @@
     if ((self = [super init])) {
         // Initialize any arrays, dictionaries, etc in here
         self.instructions = @"These are the game instructions :D";
-        self.opponent = [[Opponent alloc] init];
     }
     return self;
 }
@@ -46,7 +45,6 @@
 
 -(void)heroDuck {
     [self.hero duck];
-    [self.opponent duck];
 }
 
 -(void)heroPunch {
